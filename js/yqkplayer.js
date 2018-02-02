@@ -481,7 +481,7 @@ const functionOfCarouselFigure = () => {
 
 const _main = () => {
     functionOfYQkplayer()
-    functionOfCarouselFigure()
+//     functionOfCarouselFigure()
 }
 
 _main()
