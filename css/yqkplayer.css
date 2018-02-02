@@ -153,7 +153,7 @@ i.fa-play, i.fa-pause {
     font-size: 25px;
     width: 21.5px;
 }
-i.fa-backward, i.fa-forward, i.fa-github {
+i.fa-backward, i.fa-forward {
     cursor: pointer !important;
     font-size: 20px;
 }
@@ -352,14 +352,14 @@ li.yqkplayer-list-light:hover {
     font-size: 13px;
 }
 
-i.fa-hand-point-right, i.fa-hand-point-up {
+i.fa-hand-point-right, i.fa-github {
     font-size: 20px;
     cursor: pointer !important;
     border-radius: 5px;
     width: 20px;
     height: 21px;
 }
-i.fa-hand-point-right:hover, i.fa-hand-point-up:hover {
+i.fa-hand-point-right:hover, i.fa-github:hover {
     color: white;
     background-color: #db1103;
 }
