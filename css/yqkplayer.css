@@ -16,22 +16,24 @@ html, body {
 .flip {
     width: 240px;
     height: 415px;
-    display: -webkit-inherit;
     display: inherit;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     margin: 0 auto;
     top: 50%;
     position: relative;
-    transform: translateY(-50%) perspective(1000px) rotateY(-180deg);
-    font-size：0px;
+    -webkit-transform: translateY(-50%) perspective(1000px) rotateY(-180deg);
+            transform: translateY(-50%) perspective(1000px) rotateY(-180deg);
     -webkit-box-shadow: 0 0 60px #7b7b7b;
-    box-shadow: 0 0 60px #7b7b7b;
-    transition: all 0.4s;
+            box-shadow: 0 0 60px #7b7b7b;
     -webkit-transition: all 0.4s;
-    transform-style: preserve-3d;
+    transition: all 0.4s;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
 }
 
 .yqkplayer-background {
@@ -51,20 +53,23 @@ html, body {
     height: 415px;
     display: -webkit-inherit;
     display: inherit;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     margin: 0 auto;
     top: 50%;
     position: relative;
-    transform: translateY(-50%);
-    font-size：0px;
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
     -webkit-box-shadow: 0 0 60px #777777;
     box-shadow: 0 0 35px #777777;
     transition: all 0.4s;
     -webkit-transition: all 0.4s;
-    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
 }
 
 .yqkplayer:hover {
@@ -78,7 +83,8 @@ html, body {
     left: 0;
     width: 240px;
     height: 415px;
-    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
 }
 
 .yqkplayer-top-box {
@@ -144,7 +150,8 @@ html, body {
     -ms-flex-line-pack: center;
     align-content: center;
     width: 100%;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     padding: 10px 0px 10px;
 }
 
@@ -214,7 +221,8 @@ i.fa-backward, i.fa-forward {
     -ms-flex-line-pack: center;
     align-content: center;
     width: 100%;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     padding: 15px 0px;
 }
 
@@ -245,6 +253,8 @@ i.fa-volume-down, i.fa-volume-up, i.fa-volume-off {
     cursor: pointer !important;
     position: absolute;
     left: 64%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 35px;
     height: 16px;
@@ -254,7 +264,10 @@ i.fa-volume-down, i.fa-volume-up, i.fa-volume-off {
     cursor: pointer !important;
     position: absolute;
     top: 50%;
-    transform: translateY(-40%);
+    -webkit-transform: translateY(-40%);
+            transform: translateY(-40%);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     height: 5px;
     background: #e2e2e2;
@@ -267,22 +280,26 @@ i.fa-volume-down, i.fa-volume-up, i.fa-volume-off {
     height: 415px;
     display: -webkit-inherit;
     display: inherit;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     margin: 0 auto;
     top: 0;
     left: 0;
     position: absolute;
-    font-size：0px;
-    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
     background-color: white;
     line-height: 1;
     list-style-type: none;
     z-index: 0;
-    transform: scale(1.06) rotateY(180deg);
-    backface-visibility: hidden;
+    -webkit-transform: scale(1.06) rotateY(180deg);
+            transform: scale(1.06) rotateY(180deg);
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
 }
 
 .yqkplayer-opposite-top {
@@ -301,6 +318,8 @@ li.yqkplayer-list-light {
     padding-top: 8px;
     height: 45px;
     width: 100%;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
     transition: 0.5s;
     cursor: pointer !important;
 }
@@ -374,6 +393,8 @@ i.fa-random {
 }
 
 article.article-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     position: absolute;
     bottom: 8px;
@@ -383,6 +404,8 @@ article.article-right {
 }
 
 .article-left {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     position: absolute;
     left: 8px;
@@ -392,14 +415,19 @@ article.article-right {
 }
 
 .i-left {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     position: absolute;
     left: 50%;
     width: 70px;
     height: 20px;
     bottom: 8px;
-    transform: translateX(-50%);
-    perspective: 1000px;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+    -webkit-perspective: 1000px;
+            perspective: 1000px;
 }
 
 section.article {
@@ -415,6 +443,8 @@ section.article-section {
     border-radius: 5px;
     cursor: pointer !important;
     opacity: 0.3;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
     transition: all 0.5s;
 }
 
@@ -457,7 +487,8 @@ i.fa-chevron-left {
     position: relative;
     left: 8px;
     color: #db1103;
-    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
 }
 
 #timeInput {
@@ -478,9 +509,11 @@ i.fa-chevron-left {
     border-radius: 3.5px;
     background: white;
     cursor: pointer !important;
+    -o-transition: all 0.1s;
     transition: all 0.1s;
     -webkit-transition: all 0.1s;
-    box-shadow: 0 0 10px #2f2f2f;
+    -webkit-box-shadow: 0 0 10px #2f2f2f;
+            box-shadow: 0 0 10px #2f2f2f;
     border: 2px solid #000;
 }
 
@@ -502,11 +535,14 @@ i.fa-chevron-left {
     border-radius: 50%;
     background: red;
     cursor: pointer !important;
+    -o-transition: all 0.1s;
     transition: all 0.1s;
     -webkit-transition: all 0.1s;
-    box-shadow: 0 0 10px #2f2f2f;
+    -webkit-box-shadow: 0 0 10px #2f2f2f;
+            box-shadow: 0 0 10px #2f2f2f;
 }
 
 i.fa-chevron-left:hover, i.fa-chevron-right:hover {
-    animation: 1s ease 1 ;
+    -webkit-animation: 1s ease 1 ;
+            animation: 1s ease 1 ;
 }
