@@ -218,12 +218,10 @@ const bindEventVolumeIcon = (audio) => {
     bindEvent(element, 'click', function(event) {
         if (audio.volume != 0) {
             audio.volume = 0
-            // element.className = 'fa fa-volume-off'
             classRemoveAdd('#volume', 'fa-volume-up', 'fa-volume-off')
             changeVolumeInput(input, audio)
         } else {
             audio.volume = 1
-            input.value = 1
             classRemoveAdd('#volume', 'fa-volume-off', 'fa-volume-up')
             changeVolumeInput(input, audio)
         }
@@ -481,7 +479,7 @@ const functionOfCarouselFigure = () => {
 
 const _main = () => {
     functionOfYQkplayer()
-//     functionOfCarouselFigure()
+    functionOfCarouselFigure()
 }
 
 _main()
