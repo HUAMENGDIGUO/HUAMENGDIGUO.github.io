@@ -223,6 +223,7 @@ const bindEventVolumeIcon = (audio) => {
             classRemoveAdd('#volume', 'fa-volume-up', 'fa-volume-off')
             changeVolumeInput(input, audio)
         } else {
+            log('audio.volume', audio.volume)
             audio.volume = 1
             classRemoveAdd('#volume', 'fa-volume-off', 'fa-volume-up')
             changeVolumeInput(input, audio)
