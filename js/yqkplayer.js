@@ -151,6 +151,7 @@ const bindEventNextSong = (audio) => {
         let musiclist = e('#yqkplayer-musiclist')
         let index = nextIndex(musiclist, self)
         playMusicAtIndex(audio, musiclist, index)
+        audio.play()
     })
 }
 
@@ -162,6 +163,7 @@ const bindEventBackwardSong = (audio) => {
         let musiclist = e('#yqkplayer-musiclist')
         let index = nextIndex(musiclist, self)
         playMusicAtIndex(audio, musiclist, index)
+        audio.play()
     })
 }
 
