@@ -165,6 +165,7 @@ const bindEventBackwardSong = (audio) => {
     })
 }
 
+//红心操作
 const bindEventRedHeartIcon = () => {
     var redheart = es('.fa-heart')
     bindAll(redheart, 'click', function(event) {
@@ -174,6 +175,7 @@ const bindEventRedHeartIcon = () => {
     })
 }
 
+//播放模式切换
 const bindEventChangePlayMode = (audio, data) => {
     let playMode = e('.yqkplayer-playmode')
     bindEvent(playMode, 'click', function(event) {
