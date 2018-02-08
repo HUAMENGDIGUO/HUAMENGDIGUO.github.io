@@ -432,13 +432,6 @@ const functionOfYQkplayer = () => {
 
     FlipOfYQkplayer()
     bindEventsWithAudio(audio, data)
-    // bindEventPlayandPause(audio)
-    // bindEventChangePlayMode(audio, data)
-    // bindEventVolumeIcon(audio)
-    //
-    // bindEventNextSong(audio)
-    // bindEventBackwardSong(audio)
-    // bindEventCanplay(audio)
 }
 
 //背景轮播图
