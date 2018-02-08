@@ -110,8 +110,7 @@ const showCurrentTime = (audio) => {
         functionShowTime('.yqkplayer-currenttime', currentTime)
         functionShowTime('.yqkplayer-totaltime', duration)
         input.value = (currentTime / duration) * inputmax
-        let percent = (currentTime / duration) * 100
-        input.style.background = `linear-gradient(90deg, #e2e2e2, #db1103 ${percent}%, #db1103 ${percent}%, #e2e2e2 0%)`;
+        showInputColor(input)
     }, 500)
 }
 
@@ -125,8 +124,7 @@ const bindEventCanplay = (audio) => {
 const bindEventTimeProgressBar = () => {
     let input = e('#timeInput')
     let audio = e('#audio')
-    let v = input.value
-    audio.currentTime = v
+    audio.currentTime = input.value
 }
 
 //播放与暂停
@@ -144,30 +142,34 @@ const bindEventPlayandPause = (audio) => {
 }
 
 //快进一首
-const bindEventNextSong = (audio) => {
-    let forward = e('#forward')
-    bindEvent(forward, 'click', function(event) {
+const showPlayIcon = () => {
+    let play = e('#play')
+    if (play.classList.contains('fa-play')) {
+        classRemoveAdd('#play', 'fa-play', 'fa-pause')
+    }
+}
+
+const bindEventPlayNextSong = (audio, selector) => {
+    let element = e(selector)
+    bindEvent(element, 'click', function(event) {
         var self = event.target
         let musiclist = e('#yqkplayer-musiclist')
         let index = nextIndex(musiclist, self)
-        playMusicAtIndex(audio, musiclist, index)
+        playMusicAtIndex(audio, index)
+        showPlayIcon()
         audio.play()
     })
+}
+
+const bindEventNextSong = (audio) => {
+    bindEventPlayNextSong(audio, '#forward')
 }
 
 //后退一首
 const bindEventBackwardSong = (audio) => {
-    let backward = e('#backward')
-    bindEvent(backward, 'click', function(event) {
-        var self = event.target
-        let musiclist = e('#yqkplayer-musiclist')
-        let index = nextIndex(musiclist, self)
-        playMusicAtIndex(audio, musiclist, index)
-        audio.play()
-    })
+    bindEventPlayNextSong(audio, '#backward')
 }
 
-//红心操作
 const bindEventRedHeartIcon = () => {
     var redheart = es('.fa-heart')
     bindAll(redheart, 'click', function(event) {
@@ -177,7 +179,6 @@ const bindEventRedHeartIcon = () => {
     })
 }
 
-//播放模式切换
 const bindEventChangePlayMode = (audio, data) => {
     let playMode = e('.yqkplayer-playmode')
     bindEvent(playMode, 'click', function(event) {
@@ -200,35 +201,38 @@ const bindEventChangePlayMode = (audio, data) => {
 }
 
 //音量操作
+const showInputColor = (input) => {
+    let percent = (input.value / input.max) * 100
+    input.style.background = `linear-gradient(90deg, #e2e2e2, #db1103 ${percent}%, #db1103 ${percent}%, #e2e2e2 0%)`;
+}
+
 const bindEventVolumeProgressBar = () => {
     let input = e('#volumeInput')
     let audio = e('#audio')
-    let v = input.value
-    audio.volume = v
-    let percent = (input.value / input.max) * 100
-    input.style.background = `linear-gradient(90deg, #e2e2e2, #db1103 ${percent}%, #db1103 ${percent}%, #e2e2e2 0%)`;
+    audio.volume = input.value
+    showInputColor(input)
 }
 
 const changeVolumeInput = (input, audio) => {
     input.value = audio.volume
-    let percent = (input.value / input.max) * 100
-    input.style.background = `linear-gradient(90deg, #e2e2e2, #db1103 ${percent}%, #db1103 ${percent}%, #e2e2e2 0%)`;
+    showInputColor(input)
 }
 
 //音量图标操作
+const volumeIconClass = (audio, selector, n, class1, class2) => {
+    let input = e(selector)
+    audio.volume = n
+    classRemoveAdd('#volume', class1, class2)
+    changeVolumeInput(input, audio)
+}
+
 const bindEventVolumeIcon = (audio) => {
     let element = e('#volume')
-    let input = e('#volumeInput')
     bindEvent(element, 'click', function(event) {
         if (audio.volume != 0) {
-            audio.volume = 0
-            classRemoveAdd('#volume', 'fa-volume-up', 'fa-volume-off')
-            changeVolumeInput(input, audio)
+            volumeIconClass(audio, '#volumeInput', 0, 'fa-volume-up', 'fa-volume-off')
         } else {
-            log('audio.volume', audio.volume)
-            audio.volume = 1
-            classRemoveAdd('#volume', 'fa-volume-off', 'fa-volume-up')
-            changeVolumeInput(input, audio)
+            volumeIconClass(audio, '#volumeInput', 1, 'fa-volume-off', 'fa-volume-up')
         }
     })
 }
@@ -271,33 +275,46 @@ const insertMusic = (message) => {
 }
 
 //点击歌曲列表播放歌曲
-const bindEventMusicList = (img, audio) => {
-    let MusicList = es('.yqkplayer-list-light')
+const showPicAndAduioSrc = (audio, dataImg, dataAlt, dataMusic) => {
     let pic = e('#yqkplayer-img')
-    bindAll(MusicList, 'click', function(event) {
+    pic.src = dataImg
+    pic.alt = dataAlt
+    audio.src = dataMusic
+}
+
+const showRedcurAndIndex = (dataIndex) => {
+    removeClassAll('yqkplayer-list-redcur')
+    let curSelector = '#cur-' + String(dataIndex)
+    let curcator = e(curSelector)
+    curcator.classList.add('yqkplayer-list-redcur')
+    let musicList = e('#yqkplayer-musiclist')
+    musicList.dataset.active = dataIndex
+}
+
+const showPlayIconAndMusicInformation = (dataAlt) => {
+    variableInnerHtml('.yqkplayer-title', dataAlt.split('-')[0])
+    variableInnerHtml('.yqkplayer-author', dataAlt.split('-')[1])
+    classRemoveAdd('#yqkplayer', 'flip', 'yqkplayer')
+    showPlayIcon()
+}
+
+const showMusic = (audio, dataImg, dataAlt, dataMusic, dataIndex) => {
+    showPicAndAduioSrc(audio, dataImg, dataAlt, dataMusic)
+    showRedcurAndIndex(dataIndex)
+    showPlayIconAndMusicInformation(dataAlt)
+}
+
+const bindEventMusicList = (img, audio) => {
+    let musicList = es('.yqkplayer-list-light')
+    bindAll(musicList, 'click', function(event) {
         var self = event.currentTarget
         let dataImg = self.dataset.img
         let dataAlt = self.dataset.alt
         log('歌曲', dataAlt)
         let dataMusic = self.dataset.music
         let dataIndex = self.dataset.index
-        let play = e('#play')
 
-        pic.src = dataImg
-        pic.alt = dataAlt
-        audio.src = dataMusic
-
-        removeClassAll('yqkplayer-list-redcur')
-        let curSelector = '#cur-' + String(dataIndex)
-        let curcator = e(curSelector)
-        curcator.classList.add('yqkplayer-list-redcur')
-
-        variableInnerHtml('.yqkplayer-title', dataAlt.split('-')[0])
-        variableInnerHtml('.yqkplayer-author', dataAlt.split('-')[1])
-        classRemoveAdd('#yqkplayer', 'flip', 'yqkplayer')
-        if (play.classList.contains('fa-play')) {
-            classRemoveAdd('#play', 'fa-play', 'fa-pause')
-        }
+        showMusic(audio, dataImg, dataAlt, dataMusic, dataIndex)
         audio.play()
     })
 }
@@ -342,20 +359,14 @@ const bindEventEndRandomSong = (audio, data) => {
 }
 
 //列表循环
-const playMusicAtIndex = (audio, slide, i) => {
+const playMusicAtIndex = (audio, i) => {
     let nextindex = i
     log('playMusicAtIndex', nextindex)
     let nextSelector = '#yqkplayer-music-' + nextindex
     let nextElement = e(nextSelector)
-    let pic = e('#yqkplayer-img')
-    audio.src = nextElement.dataset.music
-    pic.src = nextElement.dataset.img
-    pic.alt = nextElement.dataset.alt
+    showPicAndAduioSrc(audio, nextElement.dataset.img, nextElement.dataset.alt, nextElement.dataset.music)
     variableInnerHtml('.yqkplayer-title', nextElement.dataset.alt.split('-')[0])
     variableInnerHtml('.yqkplayer-author', nextElement.dataset.alt.split('-')[1])
-    if (play.classList.contains('fa-play')) {
-        classRemoveAdd('#play', 'fa-play', 'fa-pause')
-    }
 }
 
 const bindEventEndListloopSong = (audio) => {
@@ -379,7 +390,7 @@ const myDoItListloop = async function doIt(audio, slide, element) {
     try {
         const a1 = await nextIndex(slide, element);
         log('歌曲index', a1)
-        const a2 = await playMusicAtIndex(audio, slide, a1)
+        const a2 = await playMusicAtIndex(audio, a1)
         const a3 = await audio.play()
     } catch (err) {
         log(err);
@@ -390,7 +401,7 @@ const myDoItRandom = async function doIt(audio, data, element) {
     try {
         const a1 = await randomSongIndex(data);
         log('歌曲index', a1)
-        const a2 = await playMusicAtIndex(audio, element, a1)
+        const a2 = await playMusicAtIndex(audio, a1)
         const a3 = await audio.play()
     } catch (err) {
         log(err);
@@ -404,6 +415,15 @@ const FlipOfYQkplayer = () => {
     bindEventVolumeProgressBar()
 }
 
+const bindEventsWithAudio = (audio, data) => {
+    bindEventPlayandPause(audio)
+    bindEventChangePlayMode(audio, data)
+    bindEventVolumeIcon(audio)
+    bindEventNextSong(audio)
+    bindEventBackwardSong(audio)
+    bindEventCanplay(audio)
+}
+
 const functionOfYQkplayer = () => {
     const audio = e('#audio')
     const img = e('#yqkplayer-img')
@@ -411,14 +431,14 @@ const functionOfYQkplayer = () => {
     insertHtml(data, img, audio)
 
     FlipOfYQkplayer()
-
-    bindEventPlayandPause(audio)
-    bindEventChangePlayMode(audio, data)
-    bindEventVolumeIcon(audio)
-
-    bindEventNextSong(audio)
-    bindEventBackwardSong(audio)
-    bindEventCanplay(audio)
+    bindEventsWithAudio(audio, data)
+    // bindEventPlayandPause(audio)
+    // bindEventChangePlayMode(audio, data)
+    // bindEventVolumeIcon(audio)
+    //
+    // bindEventNextSong(audio)
+    // bindEventBackwardSong(audio)
+    // bindEventCanplay(audio)
 }
 
 //背景轮播图
@@ -432,22 +452,21 @@ const bindEventSlide = () => {
     })
 }
 
+//小圆点的播放效果
+const showNextClass = (classSelector, prefixed, nextIndex) => {
+    // 1. 删除当前小圆点的 class
+    removeClassAll(classSelector)
+    // 2. 得到下一个小圆点的选择器
+    let nextSelector = prefixed + String(nextIndex)
+    let element = e(nextSelector)
+    element.classList.add(classSelector)
+}
+
 const showImageAtIndex = (slide, index) => {
     let nextIndex = index
     slide.dataset.active = nextIndex
-    let a = 'active'
-    removeClassAll(a)
-    let nextSelector = '#yqkplayer-background-img-' + String(nextIndex)
-    let element = e(nextSelector)
-    element.classList.add(a)
-    // 切换小圆点
-    // 1. 删除当前小圆点的 class
-    let className = 'article'
-    removeClassAll(className)
-    // 2. 得到下一个小圆点的选择器
-    let indicatorSelector = '#section-' + String(nextIndex)
-    let indicator = e(indicatorSelector)
-    indicator.classList.add(className)
+    showNextClass('active', '#yqkplayer-background-img-', nextIndex)
+    showNextClass('article', '#section-', nextIndex)
 }
 
 const bindEventIndicator = () => {
