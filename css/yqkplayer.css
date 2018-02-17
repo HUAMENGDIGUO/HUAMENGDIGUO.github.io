@@ -316,7 +316,7 @@ li.yqkplayer-list-light {
     display: -webkit-inline-box;
     padding-bottom: 8px;
     padding-top: 8px;
-    height: 45px;
+    height: 61px;
     width: 100%;
     -webkit-transition: 0.5s;
     -o-transition: 0.5s;
@@ -545,4 +545,12 @@ i.fa-chevron-left {
 i.fa-chevron-left:hover, i.fa-chevron-right:hover {
     -webkit-animation: 1s ease 1 ;
             animation: 1s ease 1 ;
+}
+
+.sortable-ghost {
+  opacity: 0.4;
+}
+
+#yqkplayerMusiclist {
+    padding-left: 0px;
 }
