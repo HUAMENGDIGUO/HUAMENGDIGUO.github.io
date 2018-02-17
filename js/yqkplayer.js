@@ -153,7 +153,7 @@ const bindEventPlayNextSong = (audio, selector) => {
     let element = e(selector)
     bindEvent(element, 'click', function(event) {
         var self = event.target
-        let musiclist = e('#yqkplayer-musiclist')
+        let musiclist = e('#yqkplayerMusiclist')
         let index = nextIndex(musiclist, self)
         playMusicAtIndex(audio, index)
         showPlayIcon()
@@ -270,8 +270,17 @@ const insertMusic = (message) => {
             </div>
         </li>
     `
-    let element = e('#yqkplayer-musiclist')
+    let element = e('#yqkplayerMusiclist')
     appendHtml(element, t)
+}
+
+//拖拽歌曲
+const sortableMusiclist = () => {
+    Sortable.create(yqkplayerMusiclist, {
+        group: 'yqkplayerMusiclist',
+        animation: 100,
+        ghostClass: "sortable-ghost"
+    });
 }
 
 //点击歌曲列表播放歌曲
@@ -287,7 +296,7 @@ const showRedcurAndIndex = (dataIndex) => {
     let curSelector = '#cur-' + String(dataIndex)
     let curcator = e(curSelector)
     curcator.classList.add('yqkplayer-list-redcur')
-    let musicList = e('#yqkplayer-musiclist')
+    let musicList = e('#yqkplayerMusiclist')
     musicList.dataset.active = dataIndex
 }
 
@@ -353,7 +362,7 @@ const randomSongIndex = (data) => {
 
 const bindEventEndRandomSong = (audio, data) => {
     bindEvent(audio, 'ended', function(event) {
-        let musiclist = e('#yqkplayer-musiclist')
+        let musiclist = e('#yqkplayerMusiclist')
         myDoItRandom(audio, data, musiclist)
     })
 }
@@ -371,7 +380,7 @@ const playMusicAtIndex = (audio, i) => {
 
 const bindEventEndListloopSong = (audio) => {
     bindEvent(audio, 'ended', function(event) {
-        let musiclist = e('#yqkplayer-musiclist')
+        let musiclist = e('#yqkplayerMusiclist')
         let offset = e('#forward')
         myDoItListloop(audio, musiclist, offset)
     })
@@ -413,6 +422,7 @@ const FlipOfYQkplayer = () => {
     Flip_Y_opposite()
     bindEventRedHeartIcon()
     bindEventVolumeProgressBar()
+    sortableMusiclist()
 }
 
 const bindEventsWithAudio = (audio, data) => {
@@ -481,6 +491,29 @@ const playNextImage = () => {
     showImageAtIndex(slide, index)
 }
 
+//拖拽小圆点
+const sortableArticleLeft = () => {
+    Sortable.create(articleLeft, {
+        group: {
+          name: 'articleLeft',
+          put: ['articleRight']
+        },
+        animation: 100,
+        ghostClass: "sortable-ghost"
+    });
+}
+
+const sortableArticleRight = () => {
+    Sortable.create(articleRight, {
+        group: {
+          name: 'articleRight',
+          put: ['articleLeft']
+        },
+        animation: 100,
+        ghostClass: "sortable-ghost"
+    });
+}
+
 const autoPlay = () => {
     let interval = 6000
     setInterval(function() {
@@ -492,6 +525,8 @@ const functionOfCarouselFigure = () => {
     bindEventSlide()
     bindEventIndicator()
     autoPlay()
+    sortableArticleLeft()
+    sortableArticleRight()
 }
 
 const _main = () => {
