@@ -127,8 +127,7 @@ html, body {
     -ms-flex-pack: justify;
     justify-content: space-between;
     width: 100%;
-    padding: 0.5px 0px;
-    padding-top: 7px;
+    padding: 0px;
     font-size: 9px;
     position: relative;
     top: 2px;
@@ -152,7 +151,7 @@ html, body {
     width: 100%;
     -ms-flex-pack: distribute;
         justify-content: space-around;
-    padding: 10px 0px 10px;
+    padding: 2px 0px 10px;
 }
 
 i.fa-play, i.fa-pause {
