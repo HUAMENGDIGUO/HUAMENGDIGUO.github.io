@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
         <link rel="stylesheet" href="https://cdn.rawgit.com/HUAMENGDIGUO/HUAMENGDIGUO.github.io/b6f155c0/css/yqkplayer.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+        <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.6.1/Sortable.min.js"></script>
         <style media="screen">
         </style>
     </head>
@@ -26,7 +28,7 @@
         <div id="yqkplayer" class="yqkplayer">
             <div class="yqkplayer-front">
                 <div class="yqkplayer-top-box animated flipInX">
-                    <img id="yqkplayer-img" class="yqkplayer-top-pic" src="https://img3.doubanio.com/lpic/s3054604.jpg" alt="Viva La Vida - Coldplay">
+                    <img id="yqkplayer-img" class="yqkplayer-top-pic" draggable="false" src="https://img3.doubanio.com/lpic/s3054604.jpg" alt="Viva La Vida - Coldplay">
                     <div class="yqkplayer-top-opposite-pic"></div>
                 </div>
                 <div class="yqkplayer-down-box animated flipInY">
@@ -84,20 +86,20 @@
                 <div class="yqkplayer-opposite-top">
                     <i class="far fa-hand-point-right"></i>
                 </div>
-                <div id="yqkplayer-musiclist" data-totality="5" data-active="1"></div>
+                <div id="yqkplayerMusiclist" data-totality="5" data-active="1"></div>
             </div>
         </div>
         <div class="i-left">
             <i class="fas fa-chevron-left fa-chevron animated flipInX" data-offset="-1"></i>
             <i class="fas fa-chevron-right fa-chevron animated flipInX" data-offset="1"></i>
         </div>
-        <div class="article-left animated fadeIn" >
+        <div id="articleLeft" class="article-left animated fadeIn" >
             <section id="section-0" class="article-section article-section-1 article" data-index="0"></section>
             <section id="section-1" class="article-section article-section-2 " data-index="1"></section>
             <section id="section-2" class="article-section article-section-3 " data-index="2"></section>
             <section id="section-3" class="article-section article-section-4 " data-index="3"></section>
         </div>
-        <article class="article-right animated fadeIn">
+        <article id="articleRight" class="article-right animated fadeIn">
             <section id="section-4" class="article-section article-section-5 " data-index="4"></section>
             <section id="section-5" class="article-section article-section-6 " data-index="5"></section>
             <section id="section-6" class="article-section article-section-7 " data-index="6"></section>
