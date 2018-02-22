@@ -240,11 +240,11 @@ const bindEventVolumeIcon = (audio) => {
 //歌曲信息库
 const dataBase = () => {
     let information = [
-        {altSingNamePath: 'Star&nbsp;Sky', altSingerPath: 'Two&nbsp;Steps&nbsp;From&nbsp;Hell', imgPath: 'https://img3.doubanio.com/lpic/s28060765.jpg', musicPath: 'http://music.163.com/song/media/outer/url?id=31654478.mp3', index: '0'},
-        {altSingNamePath: 'Viva&nbsp;La&nbsp;Vida', altSingerPath: 'Coldplay', imgPath: 'https://img3.doubanio.com/lpic/s3054604.jpg', musicPath: 'https://cdn.rawgit.com/HUAMENGDIGUO/HUAMENGDIGUO.github.io/5d6aa504/source/music/Coldplay%20-%20Viva%20la%20Vida.mp3', index: '1'},
-        {altSingNamePath: '1965', altSingerPath: 'Zella&nbsp;Day', imgPath: 'https://img1.doubanio.com/lpic/s27448489.jpg', musicPath: 'http://music.163.com/song/media/outer/url?id=28798452.mp3', index: '2'},
-        {altSingNamePath: 'We&nbsp;Choose&nbsp;To&nbsp;Go&nbsp;To&nbsp;The&nbsp;Moon', altSingerPath: "There's&nbsp;a&nbsp;Light", imgPath: 'https://img3.doubanio.com/lpic/s11173705.jpg', musicPath: 'http://music.163.com/song/media/outer/url?id=4405800.mp3', index: '3'},
-        {altSingNamePath: 'My&nbsp;Heart&nbsp;Will&nbsp;Go&nbsp;On', altSingerPath: 'Celine&nbsp;Dion', imgPath: 'https://img3.doubanio.com/lpic/s2727866.jpg', musicPath: 'http://music.163.com/song/media/outer/url?id=2308499.mp3', index: '4'},
+        {altSingNamePath: "Star&nbsp;Sky", altSingerPath: "Two&nbsp;Steps&nbsp;From&nbsp;Hell", imgPath: "https://img3.doubanio.com/lpic/s28060765.jpg", musicPath: "https://cdn.rawgit.com/HUAMENGDIGUO/HUAMENGDIGUO.github.io/5c1adde9/source/music/Two%20Steps%20From%20Hell%20-%20Star%20Sky.mp3", index: "0"},
+        {altSingNamePath: "Viva&nbsp;La&nbsp;Vida", altSingerPath: "Coldplay", imgPath: "https://img3.doubanio.com/lpic/s3054604.jpg", musicPath: "https://cdn.rawgit.com/HUAMENGDIGUO/HUAMENGDIGUO.github.io/5d6aa504/source/music/Coldplay%20-%20Viva%20la%20Vida.mp3", index: "1"},
+        {altSingNamePath: "1965", altSingerPath: "Zella&nbsp;Day", imgPath: "https://img1.doubanio.com/lpic/s27448489.jpg", musicPath: "https://cdn.rawgit.com/HUAMENGDIGUO/HUAMENGDIGUO.github.io/5c1adde9/source/music/Zella%20Day%20-%201965.mp3", index: "2"},
+        {altSingNamePath: "We&nbsp;Choose&nbsp;To&nbsp;Go&nbsp;To&nbsp;The&nbsp;Moon", altSingerPath: "There's&nbsp;a&nbsp;Light", imgPath: "https://img3.doubanio.com/lpic/s11173705.jpg", musicPath: "https://cdn.rawgit.com/HUAMENGDIGUO/HUAMENGDIGUO.github.io/5c1adde9/source/music/There&apos;s%20a%20Light%20-%20We%20Choose%20To%20Go%20To%20The%20Moon.mp3", index: "3"},
+        {altSingNamePath: "My&nbsp;Heart&nbsp;Will&nbsp;Go&nbsp;On", altSingerPath: "Celine&nbsp;Dion", imgPath: "https://img3.doubanio.com/lpic/s2727866.jpg", musicPath: "https://cdn.rawgit.com/HUAMENGDIGUO/HUAMENGDIGUO.github.io/5c1adde9/source/music/C%C3%A9line%20Dion%20-%20My%20Heart%20Will%20Go%20On.mp3", index: "4"},
     ]
     return information
 }
